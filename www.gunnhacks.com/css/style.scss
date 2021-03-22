@@ -1,0 +1,309 @@
+@import 'partials/heading'; // Heading
+@import 'partials/about'; // About
+@import 'partials/schedule'; // Schedule
+@import 'partials/speaker'; // Keynote Speaker
+@import 'partials/mentors'; // Mentors and judges
+@import 'partials/faq'; // FAQ
+@import 'partials/sponsors'; // Sponsors
+@import 'partials/guide'; // Guide
+
+
+@mixin background-size($value) {
+  -webkit-background-size: $value;
+  -moz-background-size: $value;
+  -o-background-size: $value;
+  background-size: $value;
+}
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+// The background and container for the GunnHacks heading (and 404 page)
+#hero {
+  background-image: url("../img/bg.svg") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  @include background-size(cover);
+  position: relative;
+  height: 100vh;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+// Appears in the subtitle of the GunnHacks h1, and in various places around the sections below
+h3 {
+  #hero &, .center & {
+    margin-top: -10px;
+    color: white;
+    font-size: 17pt;
+    font-family: "Abel", "Helvetica Neue", sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+// This CSS is not used?
+/*
+%button-apply {
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 4px;
+  border: 2px solid white;
+}
+
+.button {
+  @extend %button-apply;
+  text-decoration: none;
+  padding: 7px;
+  background-color: transparent;
+}
+
+.apply {
+  @extend %button-apply;
+  display: inline-block;
+  padding: 15px 40px;
+  margin: 20px 0;
+  position: relative;
+  color: #ecf0f1;
+  background-color: rgba(211, 93, 92, 1);
+}
+
+// apply button
+#apply {
+  color: #34495e;
+  overflow: hidden;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #f7a00a;
+    top: 0;
+    left: -100%;
+    @include transition(all 0.3s ease-in-out);
+  }
+
+  &:after {
+    bottom: 0 !important;
+    top: auto !important;
+    right: -100%;
+    left: auto;
+  }
+
+  &:hover {
+    background-color: rgba(255, 52, 35, 1);
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
+}
+*/
+
+// The container for the FAQ, Schedule, Sponsors, and Previous Years sections
+// Previously a deprecated <center> tag
+.center {
+  // These work and would remove the need of margin-centered but MDN recommends not using them in production builds
+  //text-align: -webkit-center;
+  //text-align: -moz-center;
+  text-align: center; 
+  
+  // The sections
+  .content {
+    font-family: "Helvetica", sans-serif;
+    max-width: 1024px; // From .row
+    width: 82.6666666667%; // From .ten.columns
+    padding: 20px 10px;
+    margin: 0px auto;
+
+    h2 {
+      font-family: "Abel";
+      text-transform: uppercase;
+    }
+  }
+}
+
+// This CSS is also not used
+/*
+.panel-group {
+  color: #333 !important;
+  border: 0;
+
+  .panel-title {
+    font-family: "Abel", sans-serif;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  a {
+    color: #e74c3c;
+    text-decoration: none;
+  }
+}
+*/
+
+// What is the purpose of this?
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+a, button {
+  text-decoration: inherit;
+  color: white;
+}
+
+a {
+  text-decoration: underline;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+p {
+  font-family: "Abel", "Helvetica Neue", sans-serif;
+}
+
+.contact-form input[type="email"], .contact-form input[type="submit"] {
+  // display: inline-block;
+  // padding: 0.8em;
+  outline: none;
+  border: none;
+  margin: 0;
+}
+
+.contact-form input[type="email"] {
+  // @include transition(all 0.5s ease-in-out);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 3px 0 0 3px;
+  color: #5e6272;
+  padding: 12px 100px 10px 10px;
+  font-size: 12px;
+  // width: 72%;
+}
+
+.contact-form input[type="submit"] {
+  @include transition(all 0.5s ease-in-out);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  color: white;
+  font-size: 11px;
+  // width: 28%;
+}
+
+em {
+  color: #f33;
+}
+
+#info {
+  opacity: 0;
+  z-index: 1;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: -100%;
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    text-indent: 50px;
+    padding-bottom: 1rem;
+  }
+}
+
+#info-wrapper {
+  width: 680px;
+  margin: 75px auto;
+}
+
+@media only screen and (max-width: 480px) {
+  #info-wrapper {
+    width: auto;
+    margin: auto;
+    padding: 75px;
+  }
+
+  h1 {
+    font-size: 30pt;
+  }
+
+  h3 {
+    font-size: 14pt !important;
+  }
+}
+
+
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px;
+
+  :focus {
+    outline: none;
+  }
+}
+
+
+.ps {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.noindent {
+  text-indent: 0 !important;
+}
+
+.home-wrapper {
+  margin-top: 1rem;
+}
+
+.strip {
+  width: 100%;
+}
+
+.white-bg {
+  background-color: white;
+  color: #333;
+  a {
+    color: #f33;
+    text-decoration: none;
+  }
+  h2 {
+    border-bottom: 2px solid #333;
+  }
+}
+
+.red-bg {
+  background-color: #dd5d5c;
+  h2 {
+    border-bottom: 2px solid white;
+  }
+}
